@@ -20,7 +20,7 @@ dependencies {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        release(MavenPublication) {
             from components.java
             groupId = 'com.github.ltttttttttttt'
             artifactId = 'release'
