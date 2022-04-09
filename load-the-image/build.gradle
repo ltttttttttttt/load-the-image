@@ -9,22 +9,21 @@ group = "com.github.ltttttttttttt"
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
+    afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.java
+                    groupId = 'com.github.ltttttttttttt'
+                    artifactId = 'load-the-image'
+                    version = '1.0.0'
+                }
+            }
+        }
+    }
 }
 
 dependencies {
     implementation(compose.ui)
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
-}
-
-project.afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.java
-                groupId = 'com.github.ltttttttttttt'
-                artifactId = 'release'
-                version = '1.0.0'
-            }
-        }
-    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
 }
