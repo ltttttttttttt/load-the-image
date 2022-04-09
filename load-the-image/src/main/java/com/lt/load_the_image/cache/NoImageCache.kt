@@ -5,9 +5,9 @@ package com.lt.load_the_image.cache
  * effect : Do not use cache
  * warning:
  */
-class NoImageCache : ImageCache<Nothing> {
-    override fun saveCache(url: String, t: Nothing) {
+class NoImageCache : ImageCache {
+    override fun saveCache(url: String, t: ByteArray) {
     }
 
-    override fun getCache(url: String): Nothing? = null
+    override fun getCache(url: String): ByteArray? = null
 }

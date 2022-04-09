@@ -17,12 +17,12 @@ object LoadTheImageManager {
     /**
      * Set is use the memory cache
      */
-    var memoryCache: ImageCache<out ByteArray> = ImageLruMemoryCache()
+    var memoryCache: ImageCache = ImageLruMemoryCache()
 
     /**
      * Set is use the file cache
      */
-    var fileCache: ImageCache<out ByteArray> = ImageFileCache()
+    var fileCache: ImageCache = ImageFileCache()
 
     /**
      * Load network resource to byteArray

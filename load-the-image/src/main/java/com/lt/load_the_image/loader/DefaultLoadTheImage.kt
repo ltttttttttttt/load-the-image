@@ -15,6 +15,10 @@ open class DefaultLoadTheImage : LoadTheImage {
             LoadTheImageManager.memoryCache.getCache(url)
                 ?: LoadTheImageManager.fileCache.getCache(url)
                 ?: LoadTheImageManager.httpLoader.load(url)
+        byteArray?.let {
+            LoadTheImageManager.memoryCache.saveCache(url, it)
+            LoadTheImageManager.fileCache.saveCache(url, it)
+        }
         return LoadTheImageManager.painterCreator.create(byteArray!!)
     }
 }

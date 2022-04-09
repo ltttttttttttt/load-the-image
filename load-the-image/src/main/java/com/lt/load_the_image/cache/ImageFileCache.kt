@@ -1,7 +1,7 @@
 package com.lt.load_the_image.cache
 
+import com.lt.load_the_image.util.MD5
 import java.io.File
-import java.net.URLEncoder
 
 /**
  * creator: lt  2022/4/8  lt.dygzs@qq.com
@@ -10,7 +10,7 @@ import java.net.URLEncoder
  */
 open class ImageFileCache(
     private val cacheDir: File = createCacheDir()
-) : ImageCache<ByteArray> {
+) : ImageCache {
 
     init {
         if (!cacheDir.exists() || !cacheDir.isDirectory)
@@ -20,8 +20,11 @@ open class ImageFileCache(
     override fun saveCache(url: String, t: ByteArray) {
         try {
             val file = File(cacheDir, urlToFileName(url))
-            if (file.exists())
+            if (file.exists()) {
+                if (file.length() == t.size.toLong())
+                    return
                 file.delete()
+            }
             file.createNewFile()
             file.writeBytes(t)
         } catch (e: Exception) {
@@ -42,7 +45,7 @@ open class ImageFileCache(
 
     //Convert url to file name
     private fun urlToFileName(url: String): String {
-        return URLEncoder.encode(url, "UTF-8")
+        return MD5.GetMD5Code(url) + url.length + ".jpg"
     }
 }
 

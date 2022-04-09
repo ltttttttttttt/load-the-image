@@ -5,18 +5,18 @@ package com.lt.load_the_image.cache
  * effect : Cache configuration of network image
  * warning:
  */
-interface ImageCache<T : Any> {
+interface ImageCache {
 
     /**
      * Save image Cache
      * [url]Unique key
      * [t]The cache
      */
-    fun saveCache(url: String, t: T)
+    fun saveCache(url: String, t: ByteArray)
 
     /**
      * Get image Cache
      * [url]Unique key
      */
-    fun getCache(url: String): T?
+    fun getCache(url: String): ByteArray?
 }

@@ -7,7 +7,7 @@ package com.lt.load_the_image.cache
  */
 open class ImageLruMemoryCache(
     private val maxMemorySize: Long = getMemoryWithOnePercent()
-) : ImageCache<ByteArray> {
+) : ImageCache {
     //image lru cache
     private val cacheMap = LinkedHashMap<String, ByteArray>(35, 1f, true)
 
