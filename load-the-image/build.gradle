@@ -1,0 +1,26 @@
+plugins {
+    id("java-library")
+    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.compose") version "1.1.1"
+    id("maven-publish")
+}
+group = "com.github.ltttttttttttt"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
+
+dependencies {
+    implementation(compose.ui)
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
