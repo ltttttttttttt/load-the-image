@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.compose") version "1.1.1"
     id("maven-publish")
 }
-group = "com.github.ltttttttttttt"
+//group = "com.github.ltttttttttttt"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -32,8 +32,8 @@ afterEvaluate {
             release(MavenPublication){
                 from components.java
                 groupId = 'com.github.ltttttttttttt'
-                artifactId = 'release'
-                version = '1.0.0'
+//                artifactId = 'release'
+//                version = '1.0.0'
             }
         }
     }
