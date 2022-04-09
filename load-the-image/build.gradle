@@ -32,7 +32,7 @@ afterEvaluate {
             release(MavenPublication){
                 from components.java
                 groupId = 'com.github.ltttttttttttt'
-//                artifactId = 'release'
+                artifactId = 'release'
 //                version = '1.0.0'
             }
         }
