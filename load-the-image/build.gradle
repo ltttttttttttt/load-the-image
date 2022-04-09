@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.compose") version "1.1.1"
@@ -10,21 +9,20 @@ group = "com.github.ltttttttttttt"
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
-//    withSourcesJar()
-//    withJavadocJar()
 }
 
 dependencies {
     implementation(compose.ui)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
 }
 
-afterEvaluate {
+project.afterEvaluate {
     publishing {
         publications {
-            java(MavenPublication) {
+            release(MavenPublication) {
                 from components.java
                 groupId = 'com.github.ltttttttttttt'
-                artifactId = 'java'
+                artifactId = 'release'
                 version = '1.0.0'
             }
         }
