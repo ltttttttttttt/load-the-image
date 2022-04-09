@@ -2,7 +2,9 @@ plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.compose") version "1.1.1"
+    id("maven-publish")
 }
+group = "com.github.ltttttttttttt"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
