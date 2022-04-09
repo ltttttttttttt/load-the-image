@@ -18,18 +18,10 @@ dependencies {
     implementation(compose.ui)
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-        }
-    }
-}
-
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication){
+            release(MavenPublication) {
                 from components.java
                 groupId = 'com.github.ltttttttttttt'
                 artifactId = 'release'

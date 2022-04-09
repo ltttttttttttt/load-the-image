@@ -19,7 +19,7 @@ dependencies {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        maven(MavenPublication) {//todo 暂时不知道这个maven是个什么东西,怎么用kotlin调用
             from components.java
         }
     }
