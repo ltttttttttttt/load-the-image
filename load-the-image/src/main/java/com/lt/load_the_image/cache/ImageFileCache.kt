@@ -45,7 +45,7 @@ open class ImageFileCache(
 
     //Convert url to file name
     private fun urlToFileName(url: String): String {
-        return MD5.GetMD5Code(url) + url.length + ".jpg"
+        return MD5.GetMD5Code(url) + url.length + url.hashCode() + ".jpg"
     }
 }
 
