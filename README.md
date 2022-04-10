@@ -28,8 +28,9 @@ repositories {
 <h3>If you just use compose-desktop</h3>
 Your compose-desktop dir, build.gradle add:
 dependencies {
-implementation 'com.github.ltttttttttttt:ltviews:[![](https://jitpack.io/v/ltttttttttttt/ltviews.svg)](https://jitpack.io/#ltttttttttttt/ltviews)'
-	<p>implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'</p>
+<p></p>
+	implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+<p></p>
 }
 
 Use the code load image with network and file and resources
@@ -42,7 +43,9 @@ Image(rememberImagePainter(/*url*/"https://img.zcool.cn/community/017e625e57415e
 Your common dir, build.gradle add:
 val desktopMain by getting{
 	dependencies {
-		api 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+<p></p>
+	implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+<p></p>
 	}
 }
 
