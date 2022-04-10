@@ -1,5 +1,6 @@
 package com.lt.load_the_image.loader
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 
 /**
@@ -11,6 +12,8 @@ fun interface LoadTheImage {
 
     /**
      * Complete process with load image
+     * return null means it cannot be processed
      */
-    fun load(url: String): Painter
+    @Composable
+    fun load(url: String): Painter?
 }

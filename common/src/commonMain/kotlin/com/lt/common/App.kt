@@ -11,7 +11,14 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun App() {
     val images = listOf(
+        //Three error
+        "C:\\SpringBootFiles\\imgs\\45260159a1f8864027389751.jpg",
+        "drawable-xxhdpi/image_b.jpg",
+        "https://img.zcool.cn/community/017e625e57415ea80121128c25819.jpg@1280w_1l_2o_100sh.jpg",
+        //Correct
+        "C:\\SpringBootFiles\\imgs\\45260159a1f88640273897513fd8b074871528733811.jpg",
         "https://img.zcool.cn/community/017e625e57415ea801216518c25819.jpg@1280w_1l_2o_100sh.jpg",
+        "drawable-xxhdpi/img_a.jpeg",
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbkimg.cdn.bcebos.com%2Fpic%2Ff9198618367adab44aed43580398a41c8701a18b4ed1&refer=http%3A%2F%2Fbkimg.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651992355&t=0eb27c606fc381fdaaaca828505ac114",
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Folimg.3dmgame.com%2Fuploads%2Fimages%2Fraiders%2F20200319%2F1584597196_470838.jpg&refer=http%3A%2F%2Folimg.3dmgame.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651991879&t=6ff7794b1d539b27df0f55a97004a36e",
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jbzj.com%2Ffile_images%2Fgame%2F201512%2F2015122310510491.jpg&refer=http%3A%2F%2Fimg.jbzj.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651991926&t=7f0680dcc5189609ead24cdbb5d6d291",
