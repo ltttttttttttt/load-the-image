@@ -27,12 +27,9 @@ repositories {
 
 <h3>If you just use compose-desktop</h3>
 Your compose-desktop dir, build.gradle add:
-
-```
 dependencies {
 	implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
 }
-```
 
 Use the code load image with network and file and resources
 
@@ -42,14 +39,11 @@ Image(rememberImagePainter(/*url*/"https://img.zcool.cn/community/017e625e57415e
 
 <h3>If you use compose(Kotlin Multiplatform), You can refer to the example.</h3>
 Your common dir, build.gradle add:
-
-```
 val desktopMain by getting{
 	dependencies {
 		api 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
 	}
 }
-```
 
 commonMain add function:
 
