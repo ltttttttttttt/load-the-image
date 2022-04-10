@@ -34,4 +34,7 @@ android {
             isMinifyEnabled = false
         }
     }
+    dexOptions {
+        javaMaxHeapSize = "4G"
+    }
 }
