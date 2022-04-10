@@ -28,7 +28,8 @@ repositories {
 <h3>If you just use compose-desktop</h3>
 Your compose-desktop dir, build.gradle add:
 dependencies {
-	implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+implementation 'com.github.ltttttttttttt:ltviews:[![](https://jitpack.io/v/ltttttttttttt/ltviews.svg)](https://jitpack.io/#ltttttttttttt/ltviews)'
+	<p>implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'</p>
 }
 
 Use the code load image with network and file and resources
