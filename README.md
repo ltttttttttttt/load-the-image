@@ -8,29 +8,29 @@ It may change incompatibly and require manual migration in the future. We would 
 Root dir, settings.gradle add:
 
 ```
-    allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 build.gradle add:
 
 ```
-    repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-    }
+repositories {
+    	...
+    	maven { url 'https://jitpack.io' }
+}
 ```
 
 <h3>If you just use compose-desktop</h3>
 Your compose-desktop dir, build.gradle add:
 
 ```
-    dependencies {
-	    implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+	dependencies {
+		implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
 	}
 ```
 
