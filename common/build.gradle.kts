@@ -55,6 +55,7 @@ kotlin {
 android {
     compileSdkVersion(31)
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDir("../desktop/src/jvmMain/resources")
     defaultConfig {
         minSdkVersion(24)
         targetSdkVersion(31)

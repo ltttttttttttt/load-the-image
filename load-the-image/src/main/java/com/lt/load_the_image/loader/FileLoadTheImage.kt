@@ -3,6 +3,7 @@ package com.lt.load_the_image.loader
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import com.lt.load_the_image.LoadTheImageManager
+import com.lt.load_the_image.util.println
 import java.io.File
 
 /**
@@ -14,15 +15,20 @@ open class FileLoadTheImage : LoadTheImage {
     @Composable
     override fun load(url: String): Painter? {
         val file = File(url)
-        if (!file.exists() || !file.isFile)
-            return null
         val byteArray = LoadTheImageManager.memoryCache.getCache(url) ?: try {
             file.readBytes()
         } catch (e: Exception) {
-            e.printStackTrace()
+            e.println()
             return null
         }
         LoadTheImageManager.memoryCache.saveCache(url, byteArray)
         return LoadTheImageManager.painterCreator.create(byteArray)
+    }
+
+    override fun canLoad(url: String): Boolean {
+        val file = File(url)
+        if (file.exists() && file.isFile)
+            return true
+        return false
     }
 }

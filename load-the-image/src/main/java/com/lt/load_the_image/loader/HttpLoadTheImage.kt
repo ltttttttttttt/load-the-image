@@ -12,8 +12,6 @@ import com.lt.load_the_image.LoadTheImageManager
 open class HttpLoadTheImage : LoadTheImage {
     @Composable
     override fun load(url: String): Painter? {
-        if (!url.startsWith("http://") && !url.startsWith("https://"))
-            return null
         val byteArray =
             LoadTheImageManager.memoryCache.getCache(url)
                 ?: LoadTheImageManager.fileCache.getCache(url)
@@ -22,5 +20,11 @@ open class HttpLoadTheImage : LoadTheImage {
         LoadTheImageManager.memoryCache.saveCache(url, byteArray)
         LoadTheImageManager.fileCache.saveCache(url, byteArray)
         return LoadTheImageManager.painterCreator.create(byteArray)
+    }
+
+    override fun canLoad(url: String): Boolean {
+        if (url.startsWith("http://") || url.startsWith("https://"))
+            return true
+        return false
     }
 }

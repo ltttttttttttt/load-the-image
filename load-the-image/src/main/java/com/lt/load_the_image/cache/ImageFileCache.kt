@@ -1,6 +1,7 @@
 package com.lt.load_the_image.cache
 
 import com.lt.load_the_image.util.MD5
+import com.lt.load_the_image.util.println
 import java.io.File
 
 /**
@@ -28,7 +29,7 @@ open class ImageFileCache(
             file.createNewFile()
             file.writeBytes(t)
         } catch (e: Exception) {
-            e.printStackTrace()
+            e.println()
         }
     }
 
@@ -38,7 +39,7 @@ open class ImageFileCache(
             if (file.exists())
                 return file.readBytes()
         } catch (e: Exception) {
-            e.printStackTrace()
+            e.println()
         }
         return null
     }

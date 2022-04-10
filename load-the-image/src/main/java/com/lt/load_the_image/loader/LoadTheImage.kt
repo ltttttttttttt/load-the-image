@@ -8,12 +8,16 @@ import androidx.compose.ui.graphics.painter.Painter
  * effect : Load the image: url to Painter
  * warning:
  */
-fun interface LoadTheImage {
+interface LoadTheImage {
 
     /**
      * Complete process with load image
-     * return null means it cannot be processed
      */
     @Composable
     fun load(url: String): Painter?
+
+    /**
+     * Return false means it cannot be processed
+     */
+    fun canLoad(url: String): Boolean
 }
