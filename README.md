@@ -29,7 +29,7 @@ repositories {
 
 version = [![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)
 
-</br>Your compose-desktop dir, build.gradle add:
+Your compose-desktop dir, build.gradle add:
 
 ```
 dependencies {
@@ -47,7 +47,7 @@ Image(rememberImagePainter(/*url*/"https://img.zcool.cn/community/017e625e57415e
 
 version = [![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)
 
-</br>Your common dir, build.gradle add:
+Your common dir, build.gradle add:
 
 ```
 val desktopMain by getting{
