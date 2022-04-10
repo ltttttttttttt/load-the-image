@@ -29,9 +29,9 @@ repositories {
 Your compose-desktop dir, build.gradle add:
 
 ```
-	dependencies {
-		implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
-	}
+dependencies {
+	implementation 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+}
 ```
 
 Use the code load image with network and file and resources
@@ -45,8 +45,8 @@ Your common dir, build.gradle add:
 
 ```
 val desktopMain by getting{
-    dependencies {
-	    api 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
+	dependencies {
+		api 'com.github.ltttttttttttt:load-the-image:[![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://jitpack.io/#ltttttttttttt/load-the-image)'
 	}
 }
 ```
