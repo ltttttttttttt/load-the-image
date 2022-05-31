@@ -9,6 +9,7 @@ import com.lt.load_the_image.cache.ImageFileCache
 import com.lt.load_the_image.cache.ImageLruMemoryCache
 import com.lt.load_the_image.loader.*
 import com.lt.load_the_image.painter.DefaultPainterCreator
+import com.lt.load_the_image.painter.HttpImagePainter
 import com.lt.load_the_image.painter.PainterCreator
 
 /**
@@ -45,19 +46,38 @@ object LoadTheImageManager {
     )
 
     /**
+     * The path of the picture displayed when an exception occurred while loading the picture
+     */
+    var defaultErrorImagePath = ""
+
+    /**
      * Load the image
      */
     @Composable
     fun load(url: String): Painter {
-        // TODO by lt 2022/4/8 18:23 需要处理线程切换和默认占位对象和占位图等的处理,异常和获取不到图片等情况的处理,加载本地图片和资源,空的处理
-        if (url.isEmpty())
-            return painterResource("drawable-xxhdpi/load_error.jpeg")// TODO by lt 2022/4/10 11:11  处理一下
+        // TODO by lt 2022/4/8 18:23 需要处理占位图等的处理
+        if (url.isEmpty()) {
+            println("Load the image error: Url is Empty")
+            return createErrorPainter()
+        }
         val loader = remember {
             loadTheImage.find { it.canLoad(url) }
         }
         if (loader != null)
             return loader.load(url)
-                ?: painterResource("drawable-xxhdpi/load_error.jpeg")// TODO by lt 2022/4/10 11:11  处理一下
-        return painterResource("drawable-xxhdpi/load_error.jpeg")// TODO by lt 2022/4/10 11:11  处理一下
+                ?: kotlin.run {
+                    println("Load the image error: Exception loading URL")
+                    createErrorPainter()
+                }
+
+        println("Load the image error: No suitable LoadTheImage found")
+        return createErrorPainter()
+    }
+
+    @Composable
+    private fun createErrorPainter(): Painter {
+        if (defaultErrorImagePath.isEmpty())
+            return HttpImagePainter()
+        return painterResource(defaultErrorImagePath)
     }
 }
