@@ -2,7 +2,10 @@ package com.lt.load_the_image
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.ClassLoaderResourceLoader
+import androidx.compose.ui.res.loadImageBitmap
 import androidx.compose.ui.res.painterResource
 import com.lt.load_the_image.cache.ImageCache
 import com.lt.load_the_image.cache.ImageFileCache
@@ -55,7 +58,6 @@ object LoadTheImageManager {
      */
     @Composable
     fun load(url: String): Painter {
-        // TODO by lt 2022/4/8 18:23 需要处理占位图等的处理
         if (url.isEmpty()) {
             println("Load the image error: Url is Empty")
             return createErrorPainter()
@@ -80,4 +82,8 @@ object LoadTheImageManager {
             return HttpImagePainter()
         return painterResource(defaultErrorImagePath)
     }
+
+    @OptIn(ExperimentalComposeUiApi::class)
+    internal fun loadResourceImageBitmap(resourcePath: String) =
+        loadImageBitmap(ClassLoaderResourceLoader().load(resourcePath))
 }

@@ -10,6 +10,7 @@ fun main() {
         Window(onCloseRequest = ::exitApplication) {
             MaterialTheme {
                 App()
+                //Image(com.lt.load_the_image.rememberImagePainter("https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/baike/pic/item/e850352ac65c10380e49077eba119313b07e8953.jpg","drawable-xxhdpi/img_a.jpeg"), "", Modifier.size(500.dp))
             }
         }
     }

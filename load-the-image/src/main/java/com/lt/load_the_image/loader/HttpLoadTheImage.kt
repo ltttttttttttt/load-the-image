@@ -2,11 +2,8 @@ package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.res.ClassLoaderResourceLoader
-import androidx.compose.ui.res.loadImageBitmap
 import com.lt.load_the_image.LoadTheImageManager
 import com.lt.load_the_image.painter.HttpImagePainter
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +17,6 @@ import org.jetbrains.skia.Image
  */
 open class HttpLoadTheImage : LoadTheImage {
 
-    @OptIn(ExperimentalComposeUiApi::class)
     @Composable
     override fun load(url: String): Painter? {
         val painter = HttpImagePainter()
@@ -35,8 +31,7 @@ open class HttpLoadTheImage : LoadTheImage {
                             val errorImagePath = LoadTheImageManager.defaultErrorImagePath
                             if (errorImagePath.isNotEmpty())
                                 painter.imageBitmap.value =
-// TODO by lt 2022/5/31 18:22 这里似乎放大了,不是自适应的,可能要该游戏啊httpimagepainter 
-                                    loadImageBitmap(ClassLoaderResourceLoader().load(errorImagePath))
+                                    LoadTheImageManager.loadResourceImageBitmap(errorImagePath)
                             return@withContext
                         }
                 LoadTheImageManager.memoryCache.saveCache(url, byteArray)
