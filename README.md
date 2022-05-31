@@ -1,8 +1,6 @@
 # load-the-image
 
 load-the-image Apply to compose-jb(desktop), Used to load network and local pictures.
-<h1>🚀Under construction</h1>
-It may change incompatibly and require manual migration in the future. We would appreciate your feedback on it in Issues.
 
 <h1>Mode of use</h1>
 Root dir, settings.gradle add:
