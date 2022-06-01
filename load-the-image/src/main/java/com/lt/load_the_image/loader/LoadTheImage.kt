@@ -14,10 +14,26 @@ interface LoadTheImage {
      * Complete process with load image
      */
     @Composable
-    fun load(url: String): Painter?
+    fun load(data: DataToBeLoaded): Painter?
 
     /**
      * Return false means it cannot be processed
      */
-    fun canLoad(url: String): Boolean
+    fun canLoad(data: DataToBeLoaded): Boolean
+}
+
+/**
+ * Data loaded in [LoadTheImage]
+ * [data]The data
+ */
+open class DataToBeLoaded(val data: Any) {
+    /**
+     * Bitmap when loading network pictures (resource)
+     */
+    var placeholderResource: String = ""
+
+    /**
+     * Whether to close the stream automatically when [data] is a stream
+     */
+    var isAutoCloseStream: Boolean = true
 }

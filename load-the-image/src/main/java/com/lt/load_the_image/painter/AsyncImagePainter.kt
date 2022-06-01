@@ -6,13 +6,15 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.IntSize
+import kotlin.math.roundToInt
 
 /**
  * creator: lt  2022/5/31  lt.dygzs@qq.com
- * effect : Image painter with HTTP.
+ * effect : Image painter with async.
  * warning:
  */
-class HttpImagePainter(
+open class AsyncImagePainter(
     imageBitmap: ImageBitmap? = null
 ) : Painter() {
     val imageBitmap: MutableState<ImageBitmap?> = mutableStateOf(imageBitmap)
@@ -25,6 +27,12 @@ class HttpImagePainter(
 
     override fun DrawScope.onDraw() {
         val bitmap = imageBitmap.value ?: return
-        drawImage(bitmap)
+        drawImage(
+            bitmap,
+            dstSize = IntSize(
+                this@onDraw.size.width.roundToInt(),
+                this@onDraw.size.height.roundToInt()
+            )
+        )
     }
 }

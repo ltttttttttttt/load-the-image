@@ -14,12 +14,13 @@ import com.lt.load_the_image.util.println
  */
 open class ResourcesLoadTheImage : LoadTheImage {
     @Composable
-    override fun load(url: String): Painter? {
-        return painterResource(url)
+    override fun load(data: DataToBeLoaded): Painter? {
+        return painterResource(data.data as? String ?: return null)
     }
 
     @OptIn(ExperimentalComposeUiApi::class)
-    override fun canLoad(url: String): Boolean {
+    override fun canLoad(data: DataToBeLoaded): Boolean {
+        val url = data.data as? String ?: return false
         //Check reference [ClassLoaderResourceLoader]
         val contextClassLoader = Thread.currentThread().contextClassLoader ?: return false
         val resource = try {

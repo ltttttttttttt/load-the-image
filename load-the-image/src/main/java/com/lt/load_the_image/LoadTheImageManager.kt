@@ -12,7 +12,7 @@ import com.lt.load_the_image.cache.ImageFileCache
 import com.lt.load_the_image.cache.ImageLruMemoryCache
 import com.lt.load_the_image.loader.*
 import com.lt.load_the_image.painter.DefaultPainterCreator
-import com.lt.load_the_image.painter.HttpImagePainter
+import com.lt.load_the_image.painter.EmptyImagePainter
 import com.lt.load_the_image.painter.PainterCreator
 
 /**
@@ -46,6 +46,10 @@ object LoadTheImageManager {
         HttpLoadTheImage(),
         FileLoadTheImage(),
         ResourcesLoadTheImage(),
+        BitmapLoadTheImage(),
+        ImageLoadTheImage(),
+        ByteArrayLoadTheImage(),
+        InputStreamLoadTheImage(),
     )
 
     /**
@@ -57,16 +61,12 @@ object LoadTheImageManager {
      * Load the image
      */
     @Composable
-    fun load(url: String): Painter {
-        if (url.isEmpty()) {
-            println("Load the image error: Url is Empty")
-            return createErrorPainter()
-        }
+    fun load(data: DataToBeLoaded): Painter {
         val loader = remember {
-            loadTheImage.find { it.canLoad(url) }
+            loadTheImage.find { it.canLoad(data) }
         }
         if (loader != null)
-            return loader.load(url)
+            return loader.load(data)
                 ?: kotlin.run {
                     println("Load the image error: Exception loading URL")
                     createErrorPainter()
@@ -79,7 +79,7 @@ object LoadTheImageManager {
     @Composable
     private fun createErrorPainter(): Painter {
         if (defaultErrorImagePath.isEmpty())
-            return HttpImagePainter()
+            return EmptyImagePainter()
         return painterResource(defaultErrorImagePath)
     }
 

@@ -13,20 +13,30 @@ import java.io.File
  */
 open class FileLoadTheImage : LoadTheImage {
     @Composable
-    override fun load(url: String): Painter? {
-        val file = File(url)
-        val byteArray = LoadTheImageManager.memoryCache.getCache(url) ?: try {
+    override fun load(data: DataToBeLoaded): Painter? {
+        val file = if (data.data is String)
+            File(data.data)
+        else if (data.data is File)
+            data.data
+        else
+            return null
+        val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
             file.readBytes()
         } catch (e: Exception) {
             e.println()
             return null
         }
-        LoadTheImageManager.memoryCache.saveCache(url, byteArray)
+        LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
         return LoadTheImageManager.painterCreator.create(byteArray)
     }
 
-    override fun canLoad(url: String): Boolean {
-        val file = File(url)
+    override fun canLoad(data: DataToBeLoaded): Boolean {
+        val file = if (data.data is String)
+            File(data.data)
+        else if (data.data is File)
+            data.data
+        else
+            return false
         if (file.exists() && file.isFile)
             return true
         return false
