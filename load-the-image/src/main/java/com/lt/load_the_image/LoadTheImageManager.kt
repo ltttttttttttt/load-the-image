@@ -69,18 +69,19 @@ object LoadTheImageManager {
             return loader.load(data)
                 ?: kotlin.run {
                     println("Load the image error: Exception loading URL")
-                    createErrorPainter()
+                    createErrorPainter(data)
                 }
 
         println("Load the image error: No suitable LoadTheImage found")
-        return createErrorPainter()
+        return createErrorPainter(data)
     }
 
     @Composable
-    private fun createErrorPainter(): Painter {
-        if (defaultErrorImagePath.isEmpty())
+    private fun createErrorPainter(data: DataToBeLoaded): Painter {
+        val errorImagePath = data.errorImagePath
+        if (errorImagePath.isEmpty())
             return EmptyImagePainter()
-        return painterResource(defaultErrorImagePath)
+        return painterResource(errorImagePath)
     }
 
     @OptIn(ExperimentalComposeUiApi::class)

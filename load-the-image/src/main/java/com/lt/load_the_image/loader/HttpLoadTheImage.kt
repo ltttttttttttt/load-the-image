@@ -36,7 +36,7 @@ open class HttpLoadTheImage : LoadTheImage {
                     byteArray = LoadTheImageManager.httpLoader.load(url)
                     if (byteArray == null) {
                         //Handling exceptions
-                        val errorImagePath = LoadTheImageManager.defaultErrorImagePath
+                        val errorImagePath = data.errorImagePath
                         if (errorImagePath.isNotEmpty())
                             painter.imageBitmap.value =
                                 LoadTheImageManager.loadResourceImageBitmap(errorImagePath)

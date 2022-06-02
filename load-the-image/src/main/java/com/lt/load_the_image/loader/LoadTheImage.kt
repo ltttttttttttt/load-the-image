@@ -2,6 +2,7 @@ package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
+import com.lt.load_the_image.LoadTheImageManager
 
 /**
  * creator: lt  2022/4/8  lt.dygzs@qq.com
@@ -36,4 +37,9 @@ open class DataToBeLoaded(val data: Any) {
      * Whether to close the stream automatically when [data] is a stream
      */
     var isAutoCloseStream: Boolean = true
+
+    /**
+     * The path of the picture displayed when an exception occurred while loading the picture
+     */
+    var errorImagePath = LoadTheImageManager.defaultErrorImagePath
 }
