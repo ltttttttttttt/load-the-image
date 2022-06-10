@@ -9,6 +9,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.lt.common.App
 import com.lt.load_the_image.LoadTheImageManager
+import com.lt.load_the_image.rememberImagePainter
 import java.io.File
 
 fun main() {
@@ -19,13 +20,13 @@ fun main() {
                 Column {
                     Row {
                         Image(
-                            com.lt.load_the_image.rememberImagePainter(
+                            rememberImagePainter(
                                 "https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/baike/pic/item/e850352ac65c10380e49077eba119313b07e8953.jpg",
                                 "drawable-xxhdpi/img_a.jpeg"
                             ), "", Modifier.size(50.dp)
                         )
                         Image(
-                            com.lt.load_the_image.rememberImagePainter(
+                            rememberImagePainter(
                                 File("C:\\SpringBootFiles\\imgs\\7633948650d6b30461fce6d13422ec3a.jpeg"),
                             ), "", Modifier.size(50.dp)
                         )
