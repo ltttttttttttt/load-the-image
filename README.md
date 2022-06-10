@@ -1,4 +1,4 @@
-[中文文档]([./README_CN.md](https://blog.csdn.net/qq_33505109/article/details/125194044))
+[中文文档](https://blog.csdn.net/qq_33505109/article/details/125194044)
 
 # load-the-image
 
