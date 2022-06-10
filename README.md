@@ -1,3 +1,5 @@
+[中文文档]([./README_CN.md](https://blog.csdn.net/qq_33505109/article/details/125194044))
+
 # load-the-image
 
 load-the-image Apply to compose-jb(desktop), Used to load network and local pictures.
