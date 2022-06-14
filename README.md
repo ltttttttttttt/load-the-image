@@ -5,6 +5,7 @@
 load-the-image Apply to compose-jb(desktop), Used to load network and local pictures.
 
 Example:
+
 ![Example](md_resource/example.png)
 
 <h1>Mode of use</h1>
@@ -69,6 +70,7 @@ fun main() {
 ```
 
 ps:Reference of Resource location, you can customize
+
 ![Resource location](md_resource/resource_location.png)
 
 <h1>Custom configuration</h1>
@@ -76,6 +78,7 @@ ps:Reference of Resource location, you can customize
 <h3>1.Configure placeholder and error image</h3>
 
 You can use the default parameters in the method
+
 ![placeholder](md_resource/use_placeholder.png)
 
 Usage:
@@ -134,6 +137,7 @@ LoadTheImageManager.httpLoader = /*your class*/
 Custom reference below:
 
 One.Implement your class:
+
 ![custom_load-the-image](md_resource/custom_LoadTheImage.png)
 
 Two.Configure:
@@ -152,7 +156,7 @@ version = [![](https://jitpack.io/v/ltttttttttttt/load-the-image.svg)](https://j
 
 Your common dir, build.gradle.kts add:
 
-```
+```kotlin
 val desktopMain by getting{
 	dependencies {
 		implementation 'com.github.ltttttttttttt:load-the-image:$version'
@@ -162,14 +166,14 @@ val desktopMain by getting{
 
 commonMain add function:
 
-```
+```kotlin
 @Composable
 expect fun rememberImagePainter(url: String): Painter
 ```
 
 androidMain add function(and other target):
 
-```
+```kotlin
 @Composable
 actual fun rememberImagePainter(url: String): Painter =
     coil.compose.rememberImagePainter(data = url)
@@ -177,7 +181,7 @@ actual fun rememberImagePainter(url: String): Painter =
 
 desktopMain add function:
 
-```
+```kotlin
 @Composable
 actual fun rememberImagePainter(url: String): Painter =
     com.lt.load_the_image.rememberImagePainter(url)
@@ -185,6 +189,6 @@ actual fun rememberImagePainter(url: String): Painter =
 ```
 Use the code load image with network and file and resources
 
-```
+```kotlin
 Image(rememberImagePainter(/*url*/"https://img.zcool.cn/community/017e625e57415ea801216518c25819.jpg@1280w_1l_2o_100sh.jpg","")
 ```
