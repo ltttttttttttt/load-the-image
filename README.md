@@ -4,9 +4,13 @@
 
 load-the-image Apply to compose-jb(desktop), Used to load network and local pictures.
 
+Example:
+![Example](md_resource/example.png)
+
 <h1>Mode of use</h1>
 
 Use the code load image with network, file, resources and more
+
 ```kotlin
 //url="https://img.zcool.cn/community/017e625e57415ea801216518c25819.jpg@1280w_1l_2o_100sh.jpg"
 Image(rememberImagePainter(url), "")
@@ -23,7 +27,7 @@ buildscript {
         ...
     }
 }
- 
+
 allprojects {
     repositories {
         maven("https://jitpack.io")//this
