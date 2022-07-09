@@ -73,6 +73,10 @@ ps:Reference of Resource location, you can customize
 
 ![Resource location](md_resource/resource_location.png)
 
+Step 4.Recommendation:  set the version of Compose-jb(desktop) to 1.1.1 or above
+
+According to the feedback, it is found that there is a bug in the 1.1.0 version of compose JB, which will not start
+
 <h1>Custom configuration</h1>
 
 <h3>1.Configure placeholder and error image</h3>
