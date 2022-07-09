@@ -21,6 +21,8 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                //引入协程,并引入基于swing的Main协程调度器
+                //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.2")
             }
         }
         val jvmTest by getting
