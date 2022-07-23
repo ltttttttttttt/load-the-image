@@ -2,6 +2,7 @@ package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toComposeImageBitmap
 import com.lt.load_the_image.LoadTheImageManager
@@ -20,7 +21,7 @@ open class HttpLoadTheImage : LoadTheImage {
     @Composable
     override fun load(data: DataToBeLoaded): Painter? {
         val url = data.data as? String ?: return null
-        val painter = AsyncImagePainter()
+        val painter = remember(url) { AsyncImagePainter() }
         LaunchedEffect(url) {
             withContext(Dispatchers.IO) {
                 //Use cache

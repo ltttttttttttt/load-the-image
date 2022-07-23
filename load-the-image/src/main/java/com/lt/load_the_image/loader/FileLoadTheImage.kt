@@ -1,6 +1,7 @@
 package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.Painter
 import com.lt.load_the_image.LoadTheImageManager
 import com.lt.load_the_image.util.println
@@ -20,14 +21,17 @@ open class FileLoadTheImage : LoadTheImage {
             data.data
         else
             return null
-        val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
-            file.readBytes()
-        } catch (e: Exception) {
-            e.println()
-            return null
+        val painter = remember(file.absolutePath) {
+            val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
+                file.readBytes()
+            } catch (e: Exception) {
+                e.println()
+                return null
+            }
+            LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
+            LoadTheImageManager.painterCreator.create(byteArray)
         }
-        LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
-        return LoadTheImageManager.painterCreator.create(byteArray)
+        return painter
     }
 
     override fun canLoad(data: DataToBeLoaded): Boolean {

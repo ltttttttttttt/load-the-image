@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme {
                 App()
+                //TestLazyList()
             }
         }
     }

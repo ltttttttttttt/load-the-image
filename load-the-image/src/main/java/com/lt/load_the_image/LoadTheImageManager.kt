@@ -62,7 +62,7 @@ object LoadTheImageManager {
      */
     @Composable
     fun load(data: DataToBeLoaded): Painter {
-        val loader = remember {
+        val loader = remember(data.data) {
             loadTheImage.find { it.canLoad(data) }
         }
         if (loader != null)

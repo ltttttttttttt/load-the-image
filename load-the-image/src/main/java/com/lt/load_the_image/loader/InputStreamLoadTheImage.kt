@@ -2,6 +2,7 @@ package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.loadImageBitmap
 import com.lt.load_the_image.LoadTheImageManager
@@ -19,7 +20,7 @@ class InputStreamLoadTheImage : LoadTheImage {
     @Composable
     override fun load(data: DataToBeLoaded): Painter? {
         val inputStream = data.data as? InputStream ?: return null
-        val painter = AsyncImagePainter()
+        val painter = remember(inputStream) { AsyncImagePainter() }
         LaunchedEffect(inputStream) {
             withContext(Dispatchers.IO) {
                 val placeholderResource = data.placeholderResource

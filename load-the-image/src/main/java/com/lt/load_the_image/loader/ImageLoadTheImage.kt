@@ -1,6 +1,7 @@
 package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toComposeImageBitmap
@@ -15,7 +16,7 @@ class ImageLoadTheImage : LoadTheImage {
     @Composable
     override fun load(data: DataToBeLoaded): Painter? {
         val image = data.data as? Image ?: return null
-        return BitmapPainter(image.toComposeImageBitmap())
+        return remember(image) { BitmapPainter(image.toComposeImageBitmap()) }
     }
 
     override fun canLoad(data: DataToBeLoaded): Boolean {
