@@ -17,7 +17,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(32)
     defaultConfig {
         applicationId = "com.lt.android"
         minSdkVersion(24)
