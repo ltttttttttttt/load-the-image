@@ -1,7 +1,7 @@
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
-    id("org.jetbrains.compose") version "1.1.1"
+    id("org.jetbrains.compose") version composeVersion
     id("maven-publish")
 }
 
@@ -15,13 +15,13 @@ java {
 
 dependencies {
     implementation(compose.ui)
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 }
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            from components.java
+        create("maven_public", MavenPublication::class) {
+            from(components.getByName("java"))
         }
     }
 }
