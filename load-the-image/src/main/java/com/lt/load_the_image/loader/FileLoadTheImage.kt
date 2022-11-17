@@ -16,7 +16,7 @@ open class FileLoadTheImage : LoadTheImage {
     @Composable
     override fun load(data: DataToBeLoaded): Painter? {
         val file = if (data.data is String)
-            File(data.data)
+            remember { File(data.data) }
         else if (data.data is File)
             data.data
         else

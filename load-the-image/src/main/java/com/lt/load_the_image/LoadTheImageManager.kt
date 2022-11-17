@@ -68,11 +68,11 @@ object LoadTheImageManager {
         if (loader != null)
             return loader.load(data)
                 ?: kotlin.run {
-                    println("Load the image error: Exception loading URL")
+                    println("Load the image error: Exception loading URL, data=${data.data}")
                     createErrorPainter(data)
                 }
 
-        println("Load the image error: No suitable LoadTheImage found")
+        println("Load the image error: No suitable LoadTheImage found, data=${data.data}")
         return createErrorPainter(data)
     }
 
@@ -80,7 +80,7 @@ object LoadTheImageManager {
     private fun createErrorPainter(data: DataToBeLoaded): Painter {
         val errorImagePath = data.errorImagePath
         if (errorImagePath.isEmpty())
-            return EmptyImagePainter()
+            return remember { EmptyImagePainter() }
         return painterResource(errorImagePath)
     }
 
