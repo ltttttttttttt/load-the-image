@@ -1,10 +1,30 @@
+/*
+ * Copyright lt 2023
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.lt.load_the_image.loader
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.Painter
 import com.lt.load_the_image.LoadTheImageManager
+import com.lt.load_the_image.painter.AsyncImagePainter
 import com.lt.load_the_image.util.println
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
@@ -21,15 +41,22 @@ open class FileLoadTheImage : LoadTheImage {
             data.data
         else
             return null
-        val painter = remember(file.absolutePath) {
-            val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
-                file.readBytes()
-            } catch (e: Exception) {
-                e.println()
-                return null
+        val painter = remember(file.absolutePath) { AsyncImagePainter() }
+        LaunchedEffect(file.absolutePath) {
+            withContext(Dispatchers.IO) {
+                val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
+                    file.readBytes()
+                } catch (e: Exception) {
+                    e.println()
+                    painter.imageBitmap.value =
+                        LoadTheImageManager.loadResourceImageBitmap(data.errorImagePath)
+                    return@withContext
+                }
+                LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
+                LoadTheImageManager.painterCreator.create(byteArray)
+                painter.imageBitmap.value =
+                    LoadTheImageManager.painterCreator.createImageBitmap(byteArray)
             }
-            LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
-            LoadTheImageManager.painterCreator.create(byteArray)
         }
         return painter
     }

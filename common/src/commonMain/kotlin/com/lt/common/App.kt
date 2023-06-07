@@ -1,15 +1,35 @@
+/*
+ * Copyright lt 2023
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.lt.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun App() {
+fun App(
+    lazyColumnState: LazyListState = rememberLazyListState()
+) {
     val images = listOf(
         //Correct
         "C:\\SpringBootFiles\\imgs\\7633948650d6b30461fce6d13422ec3a.jpeg",
@@ -28,7 +48,7 @@ fun App() {
         "https://img.zcool.cn/community/017e625e57415ea80121128c25819.jpg@1280w_1l_2o_100sh.jpg",
     )
 
-    LazyColumn {
+    LazyColumn(state = lazyColumnState) {
         items(images) {
             Image(rememberImagePainter(it), "", Modifier.size(500.dp))
         }
