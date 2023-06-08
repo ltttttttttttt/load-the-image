@@ -36,7 +36,8 @@ open class ResourcesLoadTheImage : LoadTheImage {
 
     @OptIn(ExperimentalComposeUiApi::class)
     override fun canLoad(data: DataToBeLoaded): Boolean {
-        val url = data.data as? String ?: return false
+        val url = data.data as? String
+        if (url.isNullOrEmpty()) return false
         //Check reference [ClassLoaderResourceLoader]
         val contextClassLoader = Thread.currentThread().contextClassLoader ?: return false
         val resource = try {
