@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.loadImageBitmap
 import com.lt.load_the_image.LoadTheImageManager
 import com.lt.load_the_image.painter.AsyncImagePainter
+import com.lt.load_the_image.util.println
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
@@ -48,7 +49,7 @@ class InputStreamLoadTheImage : LoadTheImage {
                     try {
                         inputStream.close()
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        e.println()
                     }
                 painter.imageBitmap.value = imageBitmap
             }

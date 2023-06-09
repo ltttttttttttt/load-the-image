@@ -63,7 +63,7 @@ open class FileLoadTheImage : LoadTheImage {
                     try {
                         LoadTheImageManager.painterCreator.createImageBitmap(byteArray)
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        e.println()
                         LoadTheImageManager.createErrorImageBitmap(data)
                     }
             }
