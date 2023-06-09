@@ -52,11 +52,7 @@ open class HttpLoadTheImage : LoadTheImage {
                     //Load with http
                     byteArray = LoadTheImageManager.httpLoader.load(url)
                     if (byteArray == null) {
-                        //Handling exceptions
-                        val errorImagePath = data.errorImagePath
-                        if (errorImagePath.isNotEmpty())
-                            painter.imageBitmap.value =
-                                LoadTheImageManager.loadResourceImageBitmap(errorImagePath)
+                        painter.imageBitmap.value = LoadTheImageManager.createErrorImageBitmap(data)
                         return@withContext
                     }
                 }

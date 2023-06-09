@@ -19,6 +19,7 @@ package com.lt.load_the_image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.ClassLoaderResourceLoader
 import androidx.compose.ui.res.loadImageBitmap
@@ -93,11 +94,18 @@ object LoadTheImageManager {
     }
 
     @Composable
-    private fun createErrorPainter(data: DataToBeLoaded): Painter {
+    internal fun createErrorPainter(data: DataToBeLoaded): Painter {
         val errorImagePath = data.errorImagePath
         if (errorImagePath.isEmpty())
             return remember { EmptyImagePainter() }
         return painterResource(errorImagePath)
+    }
+
+    internal fun createErrorImageBitmap(data: DataToBeLoaded): ImageBitmap? {
+        val errorImagePath = data.errorImagePath
+        if (errorImagePath.isEmpty())
+            return null
+        return loadResourceImageBitmap(errorImagePath)
     }
 
     @OptIn(ExperimentalComposeUiApi::class)

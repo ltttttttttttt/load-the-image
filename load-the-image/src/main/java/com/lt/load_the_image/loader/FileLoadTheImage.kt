@@ -45,7 +45,13 @@ open class FileLoadTheImage : LoadTheImage {
         LaunchedEffect(file.absolutePath) {
             withContext(Dispatchers.IO) {
                 val byteArray = LoadTheImageManager.memoryCache.getCache(file.absolutePath) ?: try {
-                    file.readBytes()
+                    val byteArray = file.readBytes()
+                    if (byteArray.isEmpty()) {
+                        painter.imageBitmap.value =
+                            LoadTheImageManager.loadResourceImageBitmap(data.errorImagePath)
+                        return@withContext
+                    }
+                    byteArray
                 } catch (e: Exception) {
                     e.println()
                     painter.imageBitmap.value =
@@ -53,9 +59,13 @@ open class FileLoadTheImage : LoadTheImage {
                     return@withContext
                 }
                 LoadTheImageManager.memoryCache.saveCache(file.absolutePath, byteArray)
-                LoadTheImageManager.painterCreator.create(byteArray)
                 painter.imageBitmap.value =
-                    LoadTheImageManager.painterCreator.createImageBitmap(byteArray)
+                    try {
+                        LoadTheImageManager.painterCreator.createImageBitmap(byteArray)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        LoadTheImageManager.createErrorImageBitmap(data)
+                    }
             }
         }
         return painter
